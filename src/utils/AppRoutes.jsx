@@ -5,7 +5,7 @@ import Update from '../components/Update'
 import { Navigate } from 'react-router-dom'
 const AppRoutes = [
     {
-        path:'/dashboard',
+        path:'/',
         exact:true,
         element:<Dashboard/>
     },
@@ -22,7 +22,7 @@ const AppRoutes = [
     {
         path:'*',
         exact:false,
-        element:<Navigate to=""/>
+        element:<Navigate to="/"/>
     }
 ]
 
