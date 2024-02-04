@@ -26,9 +26,9 @@ function Create() {
    
     let navigate = useNavigate()
    
-    const handleCreate = async()=>{
+    const handleCreate = async(e)=>{
         try {
-          
+          e.preventDefault();
           let datas = {name,username,email,address,street,suite,city,zipcode,geolat,geolng,phone,website,companyname,catchPhrase,bs}
           let res = await AxiosService.post('/data',datas)
            console.log(res);
