@@ -4,7 +4,6 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import AxiosService from '../utils/ApiServices';
-import { NavLink } from 'react-router-dom';
 import Header from './Header';
 
 function Dashboard() {
@@ -12,10 +11,10 @@ function Dashboard() {
     let [datas,setDatas] = useState([])
     const getData=async()=>{
         try {
-          let res = await AxiosService.get('/data')
+          let res = await AxiosService.get('/')
           if(res.status===200)
           {
-            // toast.success('Blogs fetched Successfully!')
+            //  toast.success('Blogs fetched Successfully!')
             setDatas(res.data)
           }
         } catch (error) {
@@ -24,8 +23,8 @@ function Dashboard() {
       }
       const handleDelete = async(id)=>{
         try {
-       
-          let res = await AxiosService.delete(`/data/${id}`)
+          let res = await AxiosService.delete(`/${id}`)
+
          
           if(res.status===200)
           {
@@ -67,23 +66,24 @@ function Dashboard() {
     <tbody>
       {
         datas.map((e,i)=>{
+          console.log(e);
           return <tr key={i}>
-            <td>{i+1}</td>
+            <td>{e.id}</td>
             <td>{e.name}</td>
             <td>{e.username}</td>
             <td >           
                 {e.email}
             </td>
-            <td>{e.address}, {e.street}, {e.suite}, {e.city}, {e.zipcode}.
+             <td>{e.address.street}, {e.address.suite}, {e.address.city}, {e.address.zipcode}.
             </td>
-            <td>{e.geoLat}</td>
-            <td>{e.geoLng}</td>
+            <td>{e.address.geo.lat}</td>
+            <td>{e.address.geo.lng}</td>
             <td>{e.phone}
             </td>
             <td>{e.website}
             </td>
-            <td>{e.companyname}, {e.catchPhrase}, {e.bs}.
-            </td>
+            <td>{e.company.name}, {e.company.catchPhrase}, {e.company.bs}.
+            </td> 
             <td>
               <Button variant="info"size="sm" onClick={()=>navigate(`/update/${e.id}`)}>Update</Button>
               &nbsp; &nbsp;

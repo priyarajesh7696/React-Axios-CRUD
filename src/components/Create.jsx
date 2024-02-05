@@ -10,7 +10,7 @@ function Create() {
     let [name,setName]=useState();
     let [username,setUsername]=useState();
     let [email,setEmail]=useState();
-    let [address,setAddress]=useState();
+    let [address,setAddress]=useState({});
     let [street,setStreet]=useState();
     let [suite,setSuite]=useState();
     let [city,setCity]=useState();
@@ -23,22 +23,30 @@ function Create() {
     let [companyname,setCompanyname]=useState();
     let [catchPhrase,setCatchphrase]=useState();
     let [bs,setBs]=useState();
+    const [datas,setDatas]=useState({}) 
    
     let navigate = useNavigate()
    
     const handleCreate = async(e)=>{
         try {
           e.preventDefault();
-          let datas = {name,username,email,address,street,suite,city,zipcode,geolat,geolng,phone,website,companyname,catchPhrase,bs}
-          let res = await AxiosService.post('/data',datas)
+          setDatas({name,username,email,
+            address:{street,suite,city,zipcode,
+            geo:{geolat,geolng}},
+            phone,
+            website,
+            company:{name,catchPhrase,bs}})
+          console.log(datas);
+          let res = await AxiosService.post('/',datas)
            console.log(res);
           if(res.status===201)
           {
             toast.success("Blog Created Successfully")
-            navigate('/dashboard')
+            // navigate('/')
           }
     
         } catch (error) {
+          console.log(error);
           
         }
       }
@@ -62,10 +70,6 @@ function Create() {
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
-       <Form.Group className="mb-3" >
-         <Form.Label>Address</Form.Label>
-         <Form.Control type="text" placeholder="Enter address"onChange={(e)=>{setAddress(e.target.value)}} />
-       </Form.Group>
       <Form.Group className="mb-3">
       <Form.Label>street</Form.Label>
       <Form.Control type="text" placeholder="Enter street" onChange={(e)=>{setStreet(e.target.value)}}/>
