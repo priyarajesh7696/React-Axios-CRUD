@@ -9,15 +9,15 @@ import { toast } from 'react-toastify';
 function Create() {
     let [name,setName]=useState();
     let [username,setUsername]=useState();
-    let [email,setEmail]=useState();
+    let [emailid,setEmail]=useState();
     let [address,setAddress]=useState();
     let [street,setStreet]=useState();
     let [suite,setSuite]=useState();
     let [city,setCity]=useState();
     let [zipcode,setZipcode]=useState();
     
-    let [geolat,setGeolat]=useState();
-    let [geolng,setGeolng]=useState();
+    let [geoLat,setGeolat]=useState();
+    let [geoLng,setGeolng]=useState();
     let [phone,setPhone]=useState();
     let [website,setWebsite]=useState();
     let [companyname,setCompanyname]=useState();
@@ -30,10 +30,9 @@ function Create() {
     const handleCreate = async(e)=>{
         try {
           e.preventDefault();
-
-          let datas= {name,username,email,
+          let datas= {name,username,emailid,
               street,suite,city,zipcode,
-               geolat,geolng,
+               geoLat,geoLng,
              phone,
              website,
              companyname,catchPhrase,bs}
@@ -87,11 +86,11 @@ function Create() {
         <Form.Control type="text" placeholder="Enter zipcode"onChange={(e)=>{setZipcode(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>geolat</Form.Label>
+        <Form.Label>geoLat</Form.Label>
         <Form.Control type="text" placeholder="Enter lat"onChange={(e)=>{setGeolat(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label>geolng</Form.Label>
+        <Form.Label>geoLng</Form.Label>
         <Form.Control type="text" placeholder="Enter lng"onChange={(e)=>{setGeolng(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3">

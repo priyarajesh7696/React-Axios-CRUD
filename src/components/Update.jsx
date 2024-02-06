@@ -17,8 +17,8 @@ function Update(){
   let [city,setCity]=useState();
   let [zipcode,setZipcode]=useState();
   
-  let [geolat,setGeolat]=useState();
-  let [geolng,setGeolng]=useState();
+  let [geoLat,setGeolat]=useState();
+  let [geoLng,setGeolng]=useState();
   let [phone,setPhone]=useState();
   let [website,setWebsite]=useState();
   let [companyname,setCompanyname]=useState();
@@ -30,7 +30,7 @@ function Update(){
         e.preventDefault();
         let {id} = params
         try {
-          let datas = {name,username,email,street,suite,city,zipcode,geolat,geolng,phone,website,companyname,catchPhrase,bs}
+          let datas = {name,username,email,street,suite,city,zipcode,geoLat,geoLng,phone,website,companyname,catchPhrase,bs}
           let res = await AxiosService.put(`/${id}`,datas)
           if(res.status===200)
           {
@@ -59,8 +59,8 @@ function Update(){
             setSuite(res.data.suite)
             setCity(res.data.city)
             setZipcode(res.data.zipcode)
-            setGeolat(res.data.geolat)
-            setGeolng(res.data.geolng)
+            setGeolat(res.data.geoLat)
+            setGeolng(res.data.geoLng)
             setPhone(res.data.phone)
             setWebsite(res.data.website)
             setCompanyname(res.data.companyname)
@@ -114,12 +114,12 @@ function Update(){
         <Form.Control type="text" placeholder="Enter zipcode" value={zipcode} onChange={e=>{setZipcode(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3" >
-        <Form.Label>geolat</Form.Label>
-        <Form.Control type="text" placeholder="Enter lat"value={geolat} onChange={e=>{setGeolat(e.target.value)}} />
+        <Form.Label>geoLat</Form.Label>
+        <Form.Control type="text" placeholder="Enter lat"value={geoLat} onChange={e=>{setGeolat(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3" >
-        <Form.Label>geolng</Form.Label>
-        <Form.Control type="text" placeholder="Enter lng" value={geolng} onChange={e=>{setGeolng(e.target.value)}} />
+        <Form.Label>geoLng</Form.Label>
+        <Form.Control type="text" placeholder="Enter lng" value={geoLng} onChange={e=>{setGeolng(e.target.value)}} />
       </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label>phone number</Form.Label>

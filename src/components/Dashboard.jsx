@@ -72,12 +72,12 @@ function Dashboard() {
             <td>{e.name}</td>
             <td>{e.username}</td>
             <td >           
-                {e.email}
+                {e.emailid}
             </td>
              <td>{e.street}, {e.suite}, {e.city}, {e.zipcode}.
             </td>
-            <td>{e.geolat}</td>
-            <td>{e.geolng}</td>
+            <td>{e.geoLat}</td>
+            <td>{e.geoLng}</td>
             <td>{e.phone}
             </td>
             <td>{e.website}
