@@ -66,7 +66,7 @@ function Dashboard() {
     <tbody>
       {
         datas.map((e,i)=>{
-          console.log(e);
+          // console.log(e);
           return <tr key={i}>
             <td>{e.id}</td>
             <td>{e.name}</td>
@@ -74,15 +74,15 @@ function Dashboard() {
             <td >           
                 {e.email}
             </td>
-             <td>{e.address.street}, {e.address.suite}, {e.address.city}, {e.address.zipcode}.
+             <td>{e.street}, {e.suite}, {e.city}, {e.zipcode}.
             </td>
-            <td>{e.address.geo.lat}</td>
-            <td>{e.address.geo.lng}</td>
+            <td>{e.geolat}</td>
+            <td>{e.geolng}</td>
             <td>{e.phone}
             </td>
             <td>{e.website}
             </td>
-            <td>{e.company.name}, {e.company.catchPhrase}, {e.company.bs}.
+            <td>{e.companyname}, {e.catchPhrase}, {e.bs}.
             </td> 
             <td>
               <Button variant="info"size="sm" onClick={()=>navigate(`/update/${e.id}`)}>Update</Button>

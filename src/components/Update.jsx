@@ -25,11 +25,12 @@ function Update(){
   let [catchPhrase,setCatchphrase]=useState();
   let [bs,setBs]=useState();
     
-
-      const handleEdit = async()=>{
+  let navigate = useNavigate()
+      const handleEdit = async(e)=>{
+        e.preventDefault();
         let {id} = params
         try {
-          let datas = {name,username,email,address:{street,suite,city,zipcode,geo:{geolat,geolng}},phone,website,company:{name,catchPhrase,bs}}
+          let datas = {name,username,email,street,suite,city,zipcode,geolat,geolng,phone,website,companyname,catchPhrase,bs}
           let res = await AxiosService.put(`/${id}`,datas)
           if(res.status===200)
           {
@@ -54,17 +55,17 @@ function Update(){
             setUsername(res.data.username)
             setEmail(res.data.email)
             // setAddress(res.data.address)
-            setStreet(res.data.address.street)
-            setSuite(res.data.address.suite)
-            setCity(res.data.address.city)
-            setZipcode(res.data.address.zipcode)
-            setGeolat(res.data.address.geo.lat)
-            setGeolng(res.data.address.geo.lng)
+            setStreet(res.data.street)
+            setSuite(res.data.suite)
+            setCity(res.data.city)
+            setZipcode(res.data.zipcode)
+            setGeolat(res.data.geolat)
+            setGeolng(res.data.geolng)
             setPhone(res.data.phone)
             setWebsite(res.data.website)
-            setCompanyname(res.data.company.name)
-            setCatchphrase(res.data.company.catchPhrase)
-            setBs(res.data.company.bs)
+            setCompanyname(res.data.companyname)
+            setCatchphrase(res.data.catchPhrase)
+            setBs(res.data.bs)
 
           }
         }catch (error) {
@@ -140,7 +141,7 @@ function Update(){
   <Form.Label>BS</Form.Label>
   <Form.Control type="text" placeholder="Enter bs" value={bs} onChange={e=>{setBs(e.target.value)}} />
 </Form.Group>
-      <Button variant="primary" type="submit" onClick={()=>handleEdit()}>
+      <Button variant="primary" type="submit" onClick={(e)=>handleEdit(e)}>
         Submit
       </Button>
     </Form>

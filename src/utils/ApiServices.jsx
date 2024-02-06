@@ -1,5 +1,5 @@
 import axios from "axios"
-const API_URL = 'http://localhost:3000/user'
+const API_URL = 'https://6599b048652b843dea531376.mockapi.io/API/data'
 
 
 const AxiosService = axios.create({

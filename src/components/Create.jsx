@@ -10,7 +10,7 @@ function Create() {
     let [name,setName]=useState();
     let [username,setUsername]=useState();
     let [email,setEmail]=useState();
-    let [address,setAddress]=useState({});
+    let [address,setAddress]=useState();
     let [street,setStreet]=useState();
     let [suite,setSuite]=useState();
     let [city,setCity]=useState();
@@ -23,26 +23,26 @@ function Create() {
     let [companyname,setCompanyname]=useState();
     let [catchPhrase,setCatchphrase]=useState();
     let [bs,setBs]=useState();
-    const [datas,setDatas]=useState({}) 
+    // const [datas,setDatas]=useState({}) 
    
     let navigate = useNavigate()
    
     const handleCreate = async(e)=>{
         try {
           e.preventDefault();
-          setDatas({name,username,email,
-            address:{street,suite,city,zipcode,
-            geo:{geolat,geolng}},
-            phone,
-            website,
-            company:{name,catchPhrase,bs}})
-          console.log(datas);
+
+          let datas= {name,username,email,
+              street,suite,city,zipcode,
+               geolat,geolng,
+             phone,
+             website,
+             companyname,catchPhrase,bs}
           let res = await AxiosService.post('/',datas)
            console.log(res);
           if(res.status===201)
           {
             toast.success("Blog Created Successfully")
-            // navigate('/')
+            navigate('/')
           }
     
         } catch (error) {
@@ -114,7 +114,7 @@ function Create() {
   <Form.Label>BS</Form.Label>
   <Form.Control type="text" placeholder="Enter bs"onChange={(e)=>{setBs(e.target.value)}} />
 </Form.Group>
-      <Button variant="primary" type="submit" onClick={()=>handleCreate()}>
+      <Button variant="primary" type="submit" onClick={(e)=>handleCreate(e)}>
         Submit
       </Button>
     </Form>
